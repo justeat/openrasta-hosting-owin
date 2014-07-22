@@ -1,4 +1,4 @@
-OWIN-OpenRasta-Service
+OpenRasta Owin Hosting
 ======================
 
 OWIN host for open rasta
