@@ -18,3 +18,11 @@ C:\_JE_Dev\OWIN-OpenRasta-Service\OpenRastaAPIProject\obj\Debug\OpenRastaAPIProj
 C:\_JE_Dev\OWIN-OpenRasta-Service\OpenRastaAPIProject\bin\Debug\OpenRastaAPIProject.dll
 C:\_JE_Dev\OWIN-OpenRasta-Service\OpenRastaAPIProject\bin\Debug\OpenRastaAPIProject.pdb
 C:\_JE_Dev\OWIN-OpenRasta-Service\OpenRastaAPIProject\bin\Debug\OpenRasta.dll
+C:\_JE_Dev\openrasta-hosting-owin\OpenRastaAPIProject\bin\Debug\OpenRastaAPIProject.dll
+C:\_JE_Dev\openrasta-hosting-owin\OpenRastaAPIProject\bin\Debug\OpenRastaAPIProject.pdb
+C:\_JE_Dev\openrasta-hosting-owin\OpenRastaAPIProject\bin\Debug\Newtonsoft.Json.dll
+C:\_JE_Dev\openrasta-hosting-owin\OpenRastaAPIProject\bin\Debug\OpenRasta.dll
+C:\_JE_Dev\openrasta-hosting-owin\OpenRastaAPIProject\bin\Debug\Newtonsoft.Json.xml
+C:\_JE_Dev\openrasta-hosting-owin\OpenRastaAPIProject\obj\Debug\OpenRastaAPIProject.csprojResolveAssemblyReference.cache
+C:\_JE_Dev\openrasta-hosting-owin\OpenRastaAPIProject\obj\Debug\OpenRastaAPIProject.dll
+C:\_JE_Dev\openrasta-hosting-owin\OpenRastaAPIProject\obj\Debug\OpenRastaAPIProject.pdb

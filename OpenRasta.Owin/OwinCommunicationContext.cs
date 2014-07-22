@@ -8,6 +8,11 @@ namespace OpenRasta.Owin
 {
     public class OwinCommunicationContext : ICommunicationContext
     {
+        public OwinCommunicationContext()
+        {
+            PipelineData = new PipelineData();
+        }
+
         public Uri ApplicationBaseUri { get; set; }
         public IRequest Request { get; set; }
         public IResponse Response { get; set; }

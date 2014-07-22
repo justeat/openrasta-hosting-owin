@@ -12,6 +12,7 @@ namespace OpenRasta.Owin
 {
     public class OwinHost : IHost
     {
+        private readonly object _syncRoot = new object();
         public IConfigurationSource ConfigurationSource { get; set; }
 
         public event EventHandler<IncomingRequestProcessedEventArgs> IncomingRequestProcessed;
@@ -41,6 +42,11 @@ namespace OpenRasta.Owin
         protected internal virtual void RaiseIncomingRequestReceived(ICommunicationContext context)
         {
             IncomingRequestReceived.Raise(this, new IncomingRequestReceivedEventArgs(context));
+        }
+
+        protected internal void RaiseIncomingRequestProcessed(ICommunicationContext context)
+        {
+            IncomingRequestProcessed.Raise(this, new IncomingRequestProcessedEventArgs(context));
         }
 
         protected internal virtual void RaiseStart()

@@ -11,6 +11,8 @@ namespace OpenRasta.Owin
             Log = NullLogger.Instance;
         }
 
+        public ILogger Log { get; set; }
+
         public void ProcessRequest(HttpContext context)
         {
             throw new Exception("owin doesn't support httpcontext what ya doing full!");
@@ -20,8 +22,6 @@ namespace OpenRasta.Owin
         {
             get { return true; }
         }
-
-        public ILogger Log { get; set; }
 
         public void ProcessRequest(OwinCommunicationContext context)
         {

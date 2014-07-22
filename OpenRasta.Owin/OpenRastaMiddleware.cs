@@ -1,79 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Owin;
 using OpenRasta.Configuration;
-using OpenRasta.DI;
 using OpenRasta.Hosting;
-using OpenRasta.Pipeline;
 
 namespace OpenRasta.Owin
 {
     using AppFunc = Func<IDictionary<string, object>, Task>;
     using OwinVariables = IDictionary<string, object>;
 
-    public class OpenRastaMiddleware
+    public class OpenRastaMiddleware : OwinMiddleware
     {
-        private readonly AppFunc _next;
+        private static readonly object SyncRoot = new object();
+        private readonly IConfigurationSource _options;
         private HostManager _hostManager;
-        private IConfigurationSource _options;
-        private PipelineData _pipelineData;
-        private Dictionary<string, AppFunc> _requestDispatcher;
-        static readonly object _syncRoot = new object();
-        public static OwinHost Host { get; private set; }
 
-        public OpenRastaMiddleware(AppFunc next, IConfigurationSource options)
+        public OpenRastaMiddleware(OwinMiddleware next, IConfigurationSource options)
+            : base(next)
         {
-            _next = next;
             _options = options;
             Host = new OwinHost();
-    
-
-          //  todo need to figure out how to initialize the pipelines
-            //_pipelineData = new PipelineData();
-         //   var stage = _pipelineData.PipelineStage;
-         //   if (stage == null)
-         //       _pipelineData.PipelineStage = stage = new PipelineStage(_hostManager.Resolver.Resolve<IPipeline>());
-
-          //  stage.SuspendAfter<KnownStages.IUriMatching>();
         }
 
-        public Task Invoke(OwinVariables environment)
+        public static OwinHost Host { get; private set; }
+
+        public override async Task Invoke(IOwinContext owinContext)
         {
-            var Request = new Uri("http://localhost:900");
-            try
-            {
-                TryInitializeHosting();
+            var request = new Uri("http://localhost:9000");
 
-                var context = new OwinCommunicationContext() { ApplicationBaseUri = Request, Request = new OpenRastaOwinRequest(environment), Response = new OpenRastaOwinResponse()};
-                _hostManager.Resolver.Resolve<OpenRastaIntegratedHandler>().ProcessRequest(context);
-            }
-            catch (Exception e)
+            TryInitializeHosting();
+            var context = new OwinCommunicationContext
             {
-               
-                WriteToResponseStream(environment, e.ToString());
-            }
-           
-            return _next(environment);
+                ApplicationBaseUri = request,
+                Request = new OpenRastaOwinRequest(owinContext.Request),
+                Response = new OpenRastaOwinResponse(owinContext.Response)
+            };
+
+            Host.RaiseIncomingRequestReceived(context);
+            Host.RaiseIncomingRequestProcessed(context);
+
+            var ms = new MemoryStream(Encoding.UTF8.GetBytes("Hello from TestMiddleware!"));
+
+            owinContext.Response.StatusCode = context.Response.StatusCode;
+
+            await ms.CopyToAsync(owinContext.Response.Body);
         }
 
-        private void WriteToResponseStream(OwinVariables environment, string message)
-        {
-            var response = environment["owin.ResponseBody"] as Stream;
-            var streamWriter = new StreamWriter(response);
-            Task.Factory.StartNew(() =>
-            {
-                streamWriter.Write(message);
-                streamWriter.Dispose();
-            });
-        }
 
         public void TryInitializeHosting()
         {
             if (_hostManager == null)
             {
-                lock (_syncRoot)
+                lock (SyncRoot)
                 {
                     Thread.MemoryBarrier();
                     if (_hostManager == null)
@@ -85,7 +67,6 @@ namespace OpenRasta.Owin
                         {
                             Host.ConfigurationSource = _options;
                             Host.RaiseStart();
-                            ExecuteConfig();
                         }
                         catch
                         {
@@ -96,14 +77,5 @@ namespace OpenRasta.Owin
                 }
             }
         }
-
-        public void ExecuteConfig()
-        {
-             using (OpenRastaConfiguration.Manual)
-             {
-                 var x = true;
-             }
-        }
-        
     }
 }
