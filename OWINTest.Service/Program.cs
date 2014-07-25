@@ -1,5 +1,4 @@
 ﻿using System.ServiceProcess;
-using OWINTest.Service;
 
 namespace OpenRasta.Owin.Service
 {

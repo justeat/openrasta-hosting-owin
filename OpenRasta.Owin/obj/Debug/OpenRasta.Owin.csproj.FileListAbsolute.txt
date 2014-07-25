@@ -46,3 +46,12 @@ C:\_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\bin\Debug\Newtonsoft.Json.xml
 C:\_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\obj\Debug\OpenRasta.Owin.csprojResolveAssemblyReference.cache
 C:\_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\obj\Debug\OpenRasta.Owin.dll
 C:\_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\obj\Debug\OpenRasta.Owin.pdb
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\bin\Debug\OpenRasta.Owin.dll
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\bin\Debug\OpenRasta.Owin.pdb
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\bin\Debug\Microsoft.Owin.dll
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\bin\Debug\OpenRasta.dll
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\bin\Debug\Owin.dll
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\bin\Debug\Microsoft.Owin.xml
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\obj\Debug\OpenRasta.Owin.csprojResolveAssemblyReference.cache
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\obj\Debug\OpenRasta.Owin.dll
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin\obj\Debug\OpenRasta.Owin.pdb

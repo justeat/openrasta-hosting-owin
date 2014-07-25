@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ServiceProcess;
 using Microsoft.Owin.Hosting;
-using OpenRasta.Owin.Service;
+using OpenRastaAPIProject;
 
-namespace OWINTest.Service
+namespace OpenRasta.Owin.Service
 {
     public partial class APIServiceTest : ServiceBase
     {

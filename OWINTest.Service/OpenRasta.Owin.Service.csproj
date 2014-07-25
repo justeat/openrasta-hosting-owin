@@ -92,7 +92,6 @@
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -112,10 +111,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenRasta.Owin\OpenRasta.Owin.csproj">
-      <Project>{2536AA33-930E-4AAB-97E7-B4FC7AACAD30}</Project>
-      <Name>OpenRasta.Owin</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OpenRastaAPIProject\OpenRastaAPIProject.csproj">
       <Project>{14437E3D-CA9C-4BFE-A481-8C021B9F4414}</Project>
       <Name>OpenRastaAPIProject</Name>

@@ -1,4 +1,4 @@
-﻿namespace OWINTest.Service
+﻿namespace OpenRasta.Owin.Service
 {
     partial class APIServiceTest
     {

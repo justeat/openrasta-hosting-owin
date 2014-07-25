@@ -62,12 +62,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenRastaAPIProject\OpenRastaAPIProject.csproj">
-      <Project>{14437E3D-CA9C-4BFE-A481-8C021B9F4414}</Project>
-      <Name>OpenRastaAPIProject</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\error-test.htm" />
     <Content Include="Resources\error.css" />
   </ItemGroup>
