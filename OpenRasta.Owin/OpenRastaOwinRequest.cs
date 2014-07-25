@@ -12,9 +12,15 @@ namespace OpenRasta.Owin
     {
         public OpenRastaOwinRequest(IOwinRequest ctx)
         {
-            Uri = new Uri("http://localhost:900" + ctx.Path);
+            Uri = ctx.Uri;
+            PopulateHeaders(ctx);
+            HttpMethod = ctx.Method;
+            Entity = new HttpEntity(Headers, ctx.Body);
+            CodecParameters = new List<string>();
+        }
 
-            //todo split this out into a different class or something
+        private void PopulateHeaders(IOwinRequest ctx)
+        {
             var headerCollection = new NameValueCollection();
             foreach (var header in ctx.Headers)
             {
@@ -22,17 +28,8 @@ namespace OpenRasta.Owin
             }
 
             Headers = new HttpHeaderDictionary(headerCollection);
-
-            //todo and this
-            HttpMethod = ctx.Method;
-
-            //todo IHttpEntity needs implementing
-            Entity = new HttpEntity(Headers, ctx.Body);
-
-            CodecParameters = new List<string>();
         }
-
-
+        
         public IHttpEntity Entity { get; private set; }
         public HttpHeaderDictionary Headers { get; private set; }
         public Uri Uri { get; set; }
