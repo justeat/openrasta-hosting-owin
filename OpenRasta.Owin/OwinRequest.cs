@@ -8,9 +8,9 @@ using OpenRasta.Web;
 
 namespace OpenRasta.Owin
 {
-    public class OpenRastaOwinRequest : IRequest
+    public class OwinRequest : IRequest
     {
-        public OpenRastaOwinRequest(IOwinRequest ctx)
+        public OwinRequest(IOwinRequest ctx)
         {
             Uri = ctx.Uri;
             PopulateHeaders(ctx);

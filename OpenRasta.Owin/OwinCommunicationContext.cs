@@ -16,8 +16,8 @@ namespace OpenRasta.Owin
         {
             PipelineData = new PipelineData();
             _nativeContext = nativeContext;
-            Request = new OpenRastaOwinRequest(nativeContext.Request);
-            Response = new OpenRastaOwinResponse(nativeContext.Response);
+            Request = new OwinRequest(nativeContext.Request);
+            Response = new OwinResponse(nativeContext.Response);
             ServerErrors = new ServerErrorList { Log = logger };
             User = nativeContext.Request.User;
         }
@@ -36,6 +36,7 @@ namespace OpenRasta.Owin
                 return appBaseUri;
             }
         }
+
         public IRequest Request { get; set; }
         public IResponse Response { get; set; }
         public OperationResult OperationResult { get; set; }

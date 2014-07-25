@@ -56,8 +56,8 @@
     <Compile Include="OwinContextStore.cs" />
     <Compile Include="OwinHttpHandler.cs" />
     <Compile Include="OpenRastaMiddleware.cs" />
-    <Compile Include="OpenRastaOwinRequest.cs" />
-    <Compile Include="OpenRastaOwinResponse.cs" />
+    <Compile Include="OwinRequest.cs" />
+    <Compile Include="OwinResponse.cs" />
     <Compile Include="OwinCommunicationContext.cs" />
     <Compile Include="OwinHost.cs" />
     <Compile Include="OwinLogSource.cs" />

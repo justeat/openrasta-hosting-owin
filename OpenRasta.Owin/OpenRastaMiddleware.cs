@@ -41,7 +41,7 @@ namespace OpenRasta.Owin
             Host.RaiseIncomingRequestReceived(context);
             Host.RaiseIncomingRequestProcessed(context);
 
-            var ms = new MemoryStream(Encoding.UTF8.GetBytes("Hello from TestMiddleware!"));
+            var ms = new MemoryStream(Encoding.UTF8.GetBytes(""));
 
             owinContext.Response.StatusCode = context.Response.StatusCode;
 

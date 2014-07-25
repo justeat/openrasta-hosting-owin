@@ -7,9 +7,9 @@ using OpenRasta.Web;
 
 namespace OpenRasta.Owin
 {
-    public class OpenRastaOwinResponse : IResponse
+    public class OwinResponse : IResponse
     {
-        public OpenRastaOwinResponse(IOwinResponse response)
+        public OwinResponse(IOwinResponse response)
         {
             NativeContext = response;
             Headers = new HttpHeaderDictionary();
