@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using OpenRasta.Configuration;
 using OpenRasta.DI;
 using OpenRasta.Diagnostics;
@@ -12,7 +10,6 @@ namespace OpenRasta.Owin
 {
     public class OwinHost : IHost
     {
-        private readonly object _syncRoot = new object();
         public IConfigurationSource ConfigurationSource { get; set; }
 
         public event EventHandler<IncomingRequestProcessedEventArgs> IncomingRequestProcessed;
@@ -52,26 +49,6 @@ namespace OpenRasta.Owin
         protected internal virtual void RaiseStart()
         {
             Start.Raise(this);
-        }
-    }
-
-    public class OwinLogSource : ILogSource
-    {
-    }
-
-    public class OwinContextStore : IContextStore
-    {
-        private readonly IDictionary store;
-
-        public OwinContextStore()
-        {
-            store = new Dictionary<string, object>();
-        }
-
-        public object this[string key]
-        {
-            get { return store[key]; }
-            set { store[key] = value; }
         }
     }
 

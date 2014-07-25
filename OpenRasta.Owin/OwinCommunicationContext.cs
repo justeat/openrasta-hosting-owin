@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Principal;
 using Microsoft.Owin;
+using OpenRasta.Diagnostics;
 using OpenRasta.Pipeline;
 using OpenRasta.Web;
 
@@ -9,14 +10,16 @@ namespace OpenRasta.Owin
 {
     public class OwinCommunicationContext : ICommunicationContext
     {
-        private IOwinContext _nativeContext;
+        private readonly IOwinContext _nativeContext;
 
-        public OwinCommunicationContext(IOwinContext nativeContext)
+        public OwinCommunicationContext(IOwinContext nativeContext,ILogger logger)
         {
             PipelineData = new PipelineData();
             _nativeContext = nativeContext;
             Request = new OpenRastaOwinRequest(nativeContext.Request);
             Response = new OpenRastaOwinResponse(nativeContext.Response);
+            ServerErrors = new ServerErrorList { Log = logger };
+            User = nativeContext.Request.User;
         }
 
         public Uri ApplicationBaseUri
@@ -38,6 +41,10 @@ namespace OpenRasta.Owin
         public OperationResult OperationResult { get; set; }
         public PipelineData PipelineData { get; set; }
         public IList<Error> ServerErrors { get; set; }
-        public IPrincipal User { get; set; }
+        public IPrincipal User
+        {
+            get { return _nativeContext.Request.User; }
+            set { _nativeContext.Request.User = value; }
+        }
     }
 }

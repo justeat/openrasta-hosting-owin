@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Owin;
 using OpenRasta.Configuration;
+using OpenRasta.DI;
+using OpenRasta.Diagnostics;
 using OpenRasta.Hosting;
 
 namespace OpenRasta.Owin
@@ -18,6 +20,8 @@ namespace OpenRasta.Owin
         private static readonly object SyncRoot = new object();
         private readonly IConfigurationSource _options;
         private HostManager _hostManager;
+        protected static ILogger<OwinLogSource> Log { get; set; }
+
 
         public OpenRastaMiddleware(OwinMiddleware next, IConfigurationSource options)
             : base(next)
@@ -32,7 +36,7 @@ namespace OpenRasta.Owin
         {
             TryInitializeHosting();
 
-            var context = new OwinCommunicationContext(owinContext);
+            var context = new OwinCommunicationContext(owinContext,Log);
 
             Host.RaiseIncomingRequestReceived(context);
             Host.RaiseIncomingRequestProcessed(context);
@@ -60,6 +64,7 @@ namespace OpenRasta.Owin
                     {
                         Host.ConfigurationSource = _options;
                         Host.RaiseStart();
+                        _hostManager.Resolver.Resolve<ILogger<OwinLogSource>>();
                     }
                     catch
                     {

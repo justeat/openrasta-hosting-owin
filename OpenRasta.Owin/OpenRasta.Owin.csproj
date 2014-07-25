@@ -53,12 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppBuilderExtensions.cs" />
+    <Compile Include="OwinContextStore.cs" />
     <Compile Include="OwinHttpHandler.cs" />
     <Compile Include="OpenRastaMiddleware.cs" />
     <Compile Include="OpenRastaOwinRequest.cs" />
     <Compile Include="OpenRastaOwinResponse.cs" />
     <Compile Include="OwinCommunicationContext.cs" />
     <Compile Include="OwinHost.cs" />
+    <Compile Include="OwinLogSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
