@@ -7,7 +7,7 @@ namespace OpenRasta.Owin.Console
     {
         private static void Main(string[] args)
         {
-            var uri = "http://localhost:8080/";
+            const string uri = "http://localhost:8080/";
 
             WebApp.Start<Startup>(uri);
 

@@ -30,15 +30,9 @@ namespace OpenRasta.Owin
 
         public override async Task Invoke(IOwinContext owinContext)
         {
-            var request = new Uri("http://localhost:9000");
-
             TryInitializeHosting();
-            var context = new OwinCommunicationContext
-            {
-                ApplicationBaseUri = request,
-                Request = new OpenRastaOwinRequest(owinContext.Request),
-                Response = new OpenRastaOwinResponse(owinContext.Response)
-            };
+
+            var context = new OwinCommunicationContext(owinContext);
 
             Host.RaiseIncomingRequestReceived(context);
             Host.RaiseIncomingRequestProcessed(context);
@@ -51,28 +45,26 @@ namespace OpenRasta.Owin
         }
 
 
-        public void TryInitializeHosting()
+        private void TryInitializeHosting()
         {
-            if (_hostManager == null)
+            if (_hostManager != null) return;
+            lock (SyncRoot)
             {
-                lock (SyncRoot)
+                Thread.MemoryBarrier();
+                if (_hostManager == null)
                 {
+                    var hostManager = HostManager.RegisterHost(Host);
                     Thread.MemoryBarrier();
-                    if (_hostManager == null)
+                    _hostManager = hostManager;
+                    try
                     {
-                        var hostManager = HostManager.RegisterHost(Host);
-                        Thread.MemoryBarrier();
-                        _hostManager = hostManager;
-                        try
-                        {
-                            Host.ConfigurationSource = _options;
-                            Host.RaiseStart();
-                        }
-                        catch
-                        {
-                            HostManager.UnregisterHost(Host);
-                            _hostManager = null;
-                        }
+                        Host.ConfigurationSource = _options;
+                        Host.RaiseStart();
+                    }
+                    catch
+                    {
+                        HostManager.UnregisterHost(Host);
+                        _hostManager = null;
                     }
                 }
             }

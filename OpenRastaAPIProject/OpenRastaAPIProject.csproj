@@ -51,14 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources\Config.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="JustEatJsonCodec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\error-test.htm" />
-    <Content Include="Resources\error.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
