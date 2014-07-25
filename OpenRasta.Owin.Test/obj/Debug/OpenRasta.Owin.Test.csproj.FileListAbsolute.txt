@@ -1,0 +1,5 @@
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Test\bin\Debug\OpenRasta.Owin.Test.dll
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Test\bin\Debug\OpenRasta.Owin.Test.pdb
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Test\obj\Debug\OpenRasta.Owin.Test.csprojResolveAssemblyReference.cache
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Test\obj\Debug\OpenRasta.Owin.Test.dll
+C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Test\obj\Debug\OpenRasta.Owin.Test.pdb

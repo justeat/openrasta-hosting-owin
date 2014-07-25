@@ -4,9 +4,9 @@ using OpenRasta.Diagnostics;
 
 namespace OpenRasta.Owin
 {
-    public class OpenRastaIntegratedHandler : IHttpHandler
+    public class OwinHttpHandler : IHttpHandler
     {
-        public OpenRastaIntegratedHandler()
+        public OwinHttpHandler()
         {
             Log = NullLogger.Instance;
         }
@@ -15,7 +15,7 @@ namespace OpenRasta.Owin
 
         public void ProcessRequest(HttpContext context)
         {
-            throw new Exception("owin doesn't support httpcontext what ya doing full!");
+            throw new Exception("owin doesn't support httpcontext what ya doing fool!");
         }
 
         public bool IsReusable
