@@ -3,11 +3,11 @@ using OpenRastaAPIProject;
 
 namespace OpenRasta.Owin.Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            string uri = "http://localhost:8080/";
+            var uri = "http://localhost:8080/";
 
             WebApp.Start<Startup>(uri);
 

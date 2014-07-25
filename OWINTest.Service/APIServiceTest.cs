@@ -7,7 +7,7 @@ namespace OpenRasta.Owin.Service
 {
     public partial class APIServiceTest : ServiceBase
     {
-        private IDisposable _server = null;
+        private IDisposable _server;
         public string baseAddress = "http://localhost:9000/";
 
         public APIServiceTest()

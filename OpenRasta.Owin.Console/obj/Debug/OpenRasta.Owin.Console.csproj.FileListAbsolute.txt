@@ -19,4 +19,3 @@ C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Console\obj\Debug\OpenRasta.
 C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Console\obj\Debug\OpenRasta.Owin.Console.pdb
 C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Console\bin\Debug\Microsoft.Owin.Host.HttpListener.dll
 C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Console\bin\Debug\Microsoft.Owin.Host.HttpListener.xml
-C:\_OS_JE_Dev\openrasta-hosting-owin\OpenRasta.Owin.Console\bin\Debug\OpenRasta.Owin.ConsoleApp.exe.config
