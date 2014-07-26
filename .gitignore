@@ -11,3 +11,5 @@
 /OpenRasta.Owin/obj/Debug
 /OpenRastaAPIProject/bin/Debug
 /OpenRastaAPIProject/obj/Debug
+/.nuget/OpenRasta.Owin.1.0.0.nupkg
+/OpenRasta.Owin.v12.suo
