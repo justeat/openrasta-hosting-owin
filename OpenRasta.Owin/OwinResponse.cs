@@ -9,15 +9,16 @@ namespace OpenRasta.Owin
 {
     public class OwinResponse : IResponse
     {
-        public OwinResponse(IOwinResponse response)
+        public OwinResponse(ref IOwinContext context )
         {
+            var response = context.Response;
+
             NativeContext = response;
             Headers = new HttpHeaderDictionary();
             Entity = new HttpEntity(Headers, NativeContext.Body);
         }
 
         private IOwinResponse NativeContext { get; set; }
-
         public IHttpEntity Entity { get; private set; }
         public HttpHeaderDictionary Headers { get; private set; }
         public bool HeadersSent { get; private set; }
@@ -27,7 +28,7 @@ namespace OpenRasta.Owin
         {
             if (HeadersSent)
                 throw new InvalidOperationException("The headers have already been sent.");
-            foreach (var header in Headers.Where(h => h.Key != "Content-Type" && h.Key != "Content-Length"))
+            foreach (var header in Headers.Where(h => h.Key != "Content-Type"))
             {
                 try
                 {

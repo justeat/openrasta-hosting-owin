@@ -12,12 +12,12 @@ namespace OpenRasta.Owin
     {
         private readonly IOwinContext _nativeContext;
 
-        public OwinCommunicationContext(IOwinContext nativeContext,ILogger logger)
+        public OwinCommunicationContext(ref IOwinContext nativeContext,ILogger logger)
         {
             PipelineData = new PipelineData();
             _nativeContext = nativeContext;
             Request = new OwinRequest(nativeContext.Request);
-            Response = new OwinResponse(nativeContext.Response);
+            Response = new OwinResponse(ref nativeContext);
             ServerErrors = new ServerErrorList { Log = logger };
             User = nativeContext.Request.User;
         }

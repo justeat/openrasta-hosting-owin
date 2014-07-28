@@ -36,16 +36,12 @@ namespace OpenRasta.Owin
         {
             TryInitializeHosting();
 
-            var context = new OwinCommunicationContext(owinContext,Log);
+            var context = new OwinCommunicationContext(ref owinContext,Log);
 
             Host.RaiseIncomingRequestReceived(context);
             Host.RaiseIncomingRequestProcessed(context);
 
-            var ms = new MemoryStream(Encoding.UTF8.GetBytes(""));
-
-            owinContext.Response.StatusCode = context.Response.StatusCode;
-
-            await ms.CopyToAsync(owinContext.Response.Body);
+            await Next.Invoke(owinContext);
         }
 
 
