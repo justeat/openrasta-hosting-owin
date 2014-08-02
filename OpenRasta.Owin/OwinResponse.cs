@@ -9,13 +9,14 @@ namespace OpenRasta.Owin
 {
     public class OwinResponse : IResponse
     {
-        public OwinResponse(ref IOwinContext context )
+        public OwinResponse(IOwinContext context)
         {
             var response = context.Response;
 
             NativeContext = response;
             Headers = new HttpHeaderDictionary();
-            Entity = new HttpEntity(Headers, NativeContext.Body);
+            var delayedStream = new DelayedStream(response.Body);
+            Entity = new HttpEntity(Headers, delayedStream);
         }
 
         private IOwinResponse NativeContext { get; set; }
@@ -32,15 +33,16 @@ namespace OpenRasta.Owin
             {
                 try
                 {
-                    var value = new[] {header.Value};
-                    var valuePair = new KeyValuePair<string, string[]>(header.Key, value);
-                    NativeContext.Headers.Add(valuePair);
+                    NativeContext.Headers.Remove(header.Key);
+                    NativeContext.Headers.Append(header.Key, header.Value);
                 }
                 catch (Exception ex)
                 {
                     var commcontext = DependencyManager.GetService<ICommunicationContext>();
                     if (commcontext != null)
+                    {
                         commcontext.ServerErrors.Add(new Error {Message = ex.ToString()});
+                    }
                 }
             }
             HeadersSent = true;
