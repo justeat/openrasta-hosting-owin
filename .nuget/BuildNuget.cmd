@@ -1,0 +1,1 @@
+nuget pack ..\OpenRasta.Owin\OpenRasta.Owin.csproj
