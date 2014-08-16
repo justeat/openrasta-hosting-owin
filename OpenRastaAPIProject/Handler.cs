@@ -14,5 +14,11 @@ namespace OpenRastaAPIProject
         {
             return new OperationResult.OK(new SomeResponse {value = "Some text for you here returned in JSON"});
         }
+
+        [HttpOperation(HttpMethod.GET, ForUriName = "Error")]
+        public OperationResult ShowError()
+        {
+            return new OperationResult.BadRequest(){ ResponseResource = new SomeResponse { value = "Some custom error response" }};
+        }
     }
 }

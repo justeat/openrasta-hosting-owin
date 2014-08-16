@@ -38,6 +38,7 @@ namespace OpenRastaAPIProject
             var output = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(entity));
             response.Stream.Write(output, 0, output.Length);
 
+
             response.ContentType = new MediaType("application/json") {CharSet = "utf-8"};
         }
     }

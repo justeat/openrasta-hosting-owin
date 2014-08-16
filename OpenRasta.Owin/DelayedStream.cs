@@ -1,6 +1,5 @@
 using System.IO;
 using System.Linq;
-using OpenRasta.Collections;
 
 namespace OpenRasta.Owin
 {
@@ -44,7 +43,10 @@ namespace OpenRasta.Owin
 
         public override void Flush()
         {
-            _baseStream.Write(_bytes, 0, _bytes.Count());
+            if (_bytes != null)
+            {
+                _baseStream.Write(_bytes, 0, _bytes.Count());
+            }
             _baseStream.Flush();
         }
 
@@ -71,7 +73,8 @@ namespace OpenRasta.Owin
             }
             else
             {
-                _bytes.AddRange(buffer);
+                _bytes.CopyTo(buffer,0);
+
             }
             _delayedStream.Write(buffer, offset, count);
         }

@@ -15,7 +15,7 @@ namespace OpenRasta.Owin
 
             NativeContext = response;
             Headers = new HttpHeaderDictionary();
-            var delayedStream = new DelayedStream(response.Body);
+            var delayedStream = new DelayedStream(context.Response.Body);
             Entity = new HttpEntity(Headers, delayedStream);
         }
 
@@ -23,7 +23,12 @@ namespace OpenRasta.Owin
         public IHttpEntity Entity { get; private set; }
         public HttpHeaderDictionary Headers { get; private set; }
         public bool HeadersSent { get; private set; }
-        public int StatusCode { get; set; }
+
+        public int StatusCode
+        {
+            get { return NativeContext.StatusCode; }
+            set { NativeContext.StatusCode = value; }
+        }
 
         public void WriteHeaders()
         {
@@ -51,6 +56,8 @@ namespace OpenRasta.Owin
                 NativeContext.Headers.Add(new KeyValuePair<string, string[]>("Content-Type",
                     new[] {Headers.ContentType.MediaType}));
             }
+
+            Entity.Stream.Flush();
         }
     }
 }

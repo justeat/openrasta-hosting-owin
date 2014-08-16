@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Owin;
 using OpenRasta.Configuration;
@@ -30,12 +31,19 @@ namespace OpenRasta.Owin
         {
             TryInitializeHosting();
 
-            var context = new OwinCommunicationContext(owinContext,Log);
+            try
+            {
+                var context = new OwinCommunicationContext(owinContext, Log);
 
-            Host.RaiseIncomingRequestReceived(context);
-            context.Response.Entity.Stream.Flush();
-            Host.RaiseIncomingRequestProcessed(context);
+                Host.RaiseIncomingRequestReceived(context);
+                Host.RaiseIncomingRequestProcessed(context);
 
+            }
+            catch (Exception e)
+            {
+                owinContext.Response.StatusCode = 500;
+                owinContext.Response.Write(e.ToString());
+            }
             await Next.Invoke(owinContext);
         }
 
