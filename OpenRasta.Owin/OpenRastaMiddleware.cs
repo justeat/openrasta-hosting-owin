@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Owin;
@@ -12,15 +9,13 @@ using OpenRasta.Hosting;
 
 namespace OpenRasta.Owin
 {
-    using AppFunc = Func<IDictionary<string, object>, Task>;
-    using OwinVariables = IDictionary<string, object>;
 
     public class OpenRastaMiddleware : OwinMiddleware
     {
         private static readonly object SyncRoot = new object();
         private readonly IConfigurationSource _options;
         private HostManager _hostManager;
-        protected static ILogger<OwinLogSource> Log { get; set; }
+        private static ILogger<OwinLogSource> Log { get; set; }
 
 
         public OpenRastaMiddleware(OwinMiddleware next, IConfigurationSource options)
@@ -36,16 +31,20 @@ namespace OpenRasta.Owin
         {
             TryInitializeHosting();
 
-            var context = new OwinCommunicationContext(owinContext,Log);
+            try
+            {
+                var context = new OwinCommunicationContext(owinContext, Log);
 
-            Host.RaiseIncomingRequestReceived(context);
-            Host.RaiseIncomingRequestProcessed(context);
+                Host.RaiseIncomingRequestReceived(context);
+                Host.RaiseIncomingRequestProcessed(context);
 
-            var ms = new MemoryStream(Encoding.UTF8.GetBytes(""));
-
-            owinContext.Response.StatusCode = context.Response.StatusCode;
-
-            await ms.CopyToAsync(owinContext.Response.Body);
+            }
+            catch (Exception e)
+            {
+                owinContext.Response.StatusCode = 500;
+                owinContext.Response.Write(e.ToString());
+            }
+            await Next.Invoke(owinContext);
         }
 
 

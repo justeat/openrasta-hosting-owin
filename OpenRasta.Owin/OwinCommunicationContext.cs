@@ -17,7 +17,7 @@ namespace OpenRasta.Owin
             PipelineData = new PipelineData();
             _nativeContext = nativeContext;
             Request = new OwinRequest(nativeContext.Request);
-            Response = new OwinResponse(nativeContext.Response);
+            Response = new OwinResponse(nativeContext);
             ServerErrors = new ServerErrorList { Log = logger };
             User = nativeContext.Request.User;
         }
