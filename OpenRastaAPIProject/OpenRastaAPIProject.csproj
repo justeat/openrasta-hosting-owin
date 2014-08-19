@@ -54,7 +54,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="CustomHeadersPipelineContributor.cs" />
     <Compile Include="Handler.cs" />
-    <Compile Include="JustEatJsonCodec.cs" />
+    <Compile Include="JsonCodec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SomeResponse.cs" />
     <Compile Include="Startup.cs" />

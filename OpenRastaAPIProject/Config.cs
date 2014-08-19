@@ -16,13 +16,19 @@ namespace OpenRastaAPIProject
                     .AtUri("Get/WithJSON")
                     .Named("WithJSON")
                     .HandledBy<Handler>()
-                    .TranscodedBy<JustEatJsonCodec>();
+                    .TranscodedBy<JsonCodec>();
+
+                ResourceSpace.Has.ResourcesOfType<SomeResponse>()
+               .AtUri("Get/WithParams?value={value}")
+               .Named("WithParams")
+               .HandledBy<Handler>()
+               .TranscodedBy<JsonCodec>();
 
                 ResourceSpace.Has.ResourcesOfType<SomeResponse>()
                     .AtUri("Get/Error")
                     .Named("Error")
                     .HandledBy<Handler>()
-                    .TranscodedBy<JustEatJsonCodec>();
+                    .TranscodedBy<JsonCodec>();
 
                 ResourceSpace.Uses.PipelineContributor<CustomHeadersPipelineContributor>();
             }
