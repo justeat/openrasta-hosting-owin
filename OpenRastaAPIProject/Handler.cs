@@ -9,6 +9,24 @@ namespace OpenRastaAPIProject
             return new OperationResult.OK();
         }
 
+        [HttpOperation(HttpMethod.GET, ForUriName = "WithParams")]
+        public OperationResult GetWithParams(int value)
+        {
+            SomeResponse response = null;
+            if (value == 100)
+            {
+                response = new SomeResponse
+                {
+                    value = "Some text for you here returned in JSON"
+                };
+            }
+            if (response == null)
+            {
+                return new OperationResult.NotFound();
+            }
+            return new OperationResult.OK(response);
+        }
+
         [HttpOperation(HttpMethod.GET, ForUriName = "WithJSON")]
         public OperationResult GetWithJSON()
         {
