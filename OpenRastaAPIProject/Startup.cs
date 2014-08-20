@@ -9,7 +9,6 @@ namespace OpenRastaAPIProject
         public void Configuration(IAppBuilder appBuilder)
         {
             IConfigurationSource configSources = new Config();
-
             appBuilder.UseOpenRasta(configSources);
         }
     }

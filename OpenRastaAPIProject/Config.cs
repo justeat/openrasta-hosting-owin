@@ -9,8 +9,17 @@ namespace OpenRastaAPIProject
             using (OpenRastaConfiguration.Manual)
             {
                 ResourceSpace.Has.ResourcesOfType<object>()
+                                 .WithoutUri
+                                 .TranscodedBy<JsonCodec>();
+
+                ResourceSpace.Has.ResourcesOfType<object>()
                     .AtUri("Get")
                     .HandledBy<Handler>();
+
+                ResourceSpace.Has.ResourcesOfType<SomeResponse>()
+                .AtUri("Post").Named("post")
+                .HandledBy<Handler>()
+                .TranscodedBy<JsonCodec>();
 
                 ResourceSpace.Has.ResourcesOfType<SomeResponse>()
                     .AtUri("Get/WithJSON")
@@ -29,6 +38,7 @@ namespace OpenRastaAPIProject
                     .Named("Error")
                     .HandledBy<Handler>()
                     .TranscodedBy<JsonCodec>();
+
 
                 ResourceSpace.Uses.PipelineContributor<CustomHeadersPipelineContributor>();
             }
