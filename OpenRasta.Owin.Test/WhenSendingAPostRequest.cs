@@ -1,12 +1,10 @@
-﻿using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Text;
 using Microsoft.Owin.Testing;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenRastaAPIProject;
-using Shouldly;
 
 namespace OpenRasta.Owin.Test
 {
@@ -28,7 +26,7 @@ namespace OpenRasta.Owin.Test
                     //test response exists
                     Assert.IsNotNull(response);
                     //test statuscode
-                    Assert.IsTrue(response.StatusCode == HttpStatusCode.OK);
+                    Assert.IsTrue(response.StatusCode == HttpStatusCode.UnsupportedMediaType);
                     //test result
                     var readTask = response.Content.ReadAsStringAsync();
                     readTask.Wait();
