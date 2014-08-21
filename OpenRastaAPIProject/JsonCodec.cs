@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using OpenRasta.Codecs;
@@ -19,9 +20,15 @@ namespace OpenRastaAPIProject
                 throw new InvalidOperationException();
             }
 
-            var streamBytes = new byte[request.Stream.Length];
-            var bytesRead = request.Stream.Read(streamBytes, 0, streamBytes.Length);
-            var postData = Encoding.UTF8.GetString(streamBytes, 0, bytesRead);
+            string body;
+            using (var reader = new StreamReader(request.Stream))
+            {
+                body = reader.ReadToEndAsync().Result;
+            }
+
+            var postData = body;
+
+            
 
             return JsonConvert.DeserializeObject(postData, destinationType.StaticType);
         }

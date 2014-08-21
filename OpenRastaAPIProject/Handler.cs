@@ -38,5 +38,10 @@ namespace OpenRastaAPIProject
         {
             return new OperationResult.BadRequest(){ ResponseResource = new SomeResponse { value = "Some custom error response" }};
         }
+        [HttpOperation(HttpMethod.POST, ForUriName = "post")]
+        public OperationResult Post(SomeRequest request)
+        {
+            return new OperationResult.OK(){ ResponseResource = new SomeResponse { value = request.Value } };
+        }
     }
 }
