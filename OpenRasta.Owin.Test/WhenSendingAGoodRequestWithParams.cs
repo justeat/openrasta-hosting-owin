@@ -10,30 +10,39 @@ using Shouldly;
 namespace OpenRasta.Owin.Test
 {
     [TestFixture]
-    public class WhenSendingAGoodRequestWithParams
+    public class WhenSendingAGoodRequestWithParams :TestServerBase
     {
-        [Test]
-        public async void ResponseIsValid()
-        {
-            using (var server = TestServer.Create<Startup>())
-            {
-                using (var client = new HttpClient(server.Handler))
-                {
-                    var response = await client.GetAsync("http://testserver/Get/WithParams?value=100");
+        string Url = "http://testserver/Get/WithParams?value=100";
 
-                    //test response exists
-                    Assert.IsNotNull(response);
-                    //test statuscode
-                    Assert.IsTrue(response.StatusCode == HttpStatusCode.OK);
-                    //test result
-                    var readTask = response.Content.ReadAsStringAsync();
-                    readTask.Wait();
-                    Assert.IsNotNull(readTask.Result);
-                    //test custom header added headers
-                    response.Headers.First().Value.ShouldContain("Custom Headers added via pipeline");
-                }
-            }
-            
+        [Test]
+        public async void ResponseIsNotNull()
+        {
+            var response = await CallGetUrlAsync(Url);
+            Assert.IsNotNull(response);
         }
+
+        [Test]
+        public async void ResponseStatusCodeIsOK()
+        {
+            var response = await CallGetUrlAsync(Url);
+            Assert.IsTrue(response.StatusCode == HttpStatusCode.OK);
+        }
+
+        [Test]
+        public async void ResponseHasAResult()
+        {
+            var response = await CallGetUrlAsync(Url);
+            var readTask = response.Content.ReadAsStringAsync();
+            readTask.Wait();
+            Assert.IsNotNull(readTask.Result);
+        }
+
+        [Test]
+        public async void ResponseContainsCustomHeaders()
+        {
+            var response = await CallGetUrlAsync(Url);
+            response.Headers.First().Value.ShouldContain("Custom Headers added via pipeline");
+        }
+      
     }
 }

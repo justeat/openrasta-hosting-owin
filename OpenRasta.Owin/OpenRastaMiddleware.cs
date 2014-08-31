@@ -33,13 +33,16 @@ namespace OpenRasta.Owin
 
             try
             {
-                lock (SyncRoot)
-                {
-                    var context = new OwinCommunicationContext(owinContext, Log);
+                var context = new OwinCommunicationContext(owinContext, Log);
 
+                lock (SyncRoot)
+                {                    
                     Host.RaiseIncomingRequestReceived(context);
+
                     Host.RaiseIncomingRequestProcessed(context);
                 }
+                
+                
 
             }
             catch (Exception e)

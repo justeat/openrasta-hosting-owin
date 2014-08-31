@@ -29,6 +29,11 @@ namespace OpenRasta.Owin
             }
 
             Headers = new HttpHeaderDictionary(headerCollection);
+
+            if(Headers.ContentLength == null)
+            {
+                Headers.ContentLength = ctx.Body.Length;
+            }
         }
         
         public IHttpEntity Entity { get; private set; }
