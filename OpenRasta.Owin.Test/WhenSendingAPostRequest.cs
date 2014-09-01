@@ -1,7 +1,5 @@
 ﻿using System.Net;
-using System.Net.Http;
-using System.Text;
-using Microsoft.Owin.Testing;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenRastaAPIProject;
 using System.Linq;
@@ -37,6 +35,9 @@ namespace OpenRasta.Owin.Test
             var readTask = response.Content.ReadAsStringAsync();
             readTask.Wait();
             Assert.IsNotNull(readTask.Result);
+            var dataResponse = JsonConvert.DeserializeObject<SomeResponse>(readTask.Result);
+            Assert.AreEqual(dataResponse.value ,"You got post!");
+            
         }
 
         [Test]

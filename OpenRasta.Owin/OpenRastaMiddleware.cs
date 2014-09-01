@@ -33,16 +33,7 @@ namespace OpenRasta.Owin
 
             try
             {
-                var context = new OwinCommunicationContext(owinContext, Log);
-
-                lock (SyncRoot)
-                {                    
-                    Host.RaiseIncomingRequestReceived(context);
-
-                    Host.RaiseIncomingRequestProcessed(context);
-                }
-                
-                
+                owinContext = ProcessRequest(owinContext);                    
 
             }
             catch (Exception e)
@@ -51,6 +42,20 @@ namespace OpenRasta.Owin
                 owinContext.Response.Write(e.ToString());
             }
             await Next.Invoke(owinContext);
+        }
+
+        private IOwinContext ProcessRequest(IOwinContext owinContext)
+        {
+            var context = new OwinCommunicationContext(owinContext, Log);
+                    
+            lock (SyncRoot)
+            {
+                Host.RaiseIncomingRequestReceived(context);
+
+                Host.RaiseIncomingRequestProcessed(context);
+            }
+
+            return owinContext;
         }
 
 

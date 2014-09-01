@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Net.Http;
 using Microsoft.Owin.Testing;
 using OpenRastaAPIProject;
@@ -12,7 +9,7 @@ namespace OpenRasta.Owin.Test
 {
     public class TestServerBase
     {
-        public async Task<HttpResponseMessage> CallGetUrlAsync(string url)
+        protected static async Task<HttpResponseMessage> CallGetUrlAsync(string url)
         {
             var server = TestServer.Create<Startup>();
 
@@ -22,7 +19,7 @@ namespace OpenRasta.Owin.Test
         }
 
 
-        public async Task<HttpResponseMessage> CallPostUrlAsync(string url, object data)
+        protected static async Task<HttpResponseMessage> CallPostUrlAsync(string url, object data)
         {
             var server = TestServer.Create<Startup>();
 

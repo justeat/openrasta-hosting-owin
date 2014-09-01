@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="OpenRasta, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\openrasta-core.2.5.13\lib\net40\OpenRasta.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -66,14 +70,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\_Personal_Dev\openrasta-core\src\OpenRasta\OpenRasta.csproj">
-      <Project>{3d251617-2581-4d9c-a639-5cfb0bb09420}</Project>
-      <Name>OpenRasta</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OpenRasta.Owin\OpenRasta.Owin.csproj">
       <Project>{2536aa33-930e-4aab-97e7-b4fc7aacad30}</Project>
       <Name>OpenRasta.Owin</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\error-test.htm" />
+    <Content Include="Resources\error.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

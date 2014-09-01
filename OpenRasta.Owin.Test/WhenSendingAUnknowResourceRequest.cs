@@ -1,9 +1,6 @@
 ﻿using System.Linq;
 using System.Net;
-using System.Net.Http;
-using Microsoft.Owin.Testing;
 using NUnit.Framework;
-using OpenRastaAPIProject;
 using Shouldly;
 
 namespace OpenRasta.Owin.Test
