@@ -17,7 +17,6 @@ namespace OpenRasta.Owin
         public bool ConfigureRootDependencies(IDependencyResolver resolver)
         {
             resolver.AddDependency<IContextStore, OwinContextStore>(DependencyLifetime.Singleton);
-            resolver.AddDependency<OwinHttpHandler>(DependencyLifetime.Transient);
             resolver.AddDependency<ILogger<OwinLogSource>, TraceSourceLogger<OwinLogSource>>(
                 DependencyLifetime.Transient);
             return true;

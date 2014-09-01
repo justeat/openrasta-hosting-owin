@@ -1,38 +1,35 @@
 ﻿using System.Linq;
 using System.Net;
-using System.Net.Http;
-using Microsoft.Owin.Testing;
 using NUnit.Framework;
-using OpenRastaAPIProject;
 using Shouldly;
 
 namespace OpenRasta.Owin.Test
 {
     [TestFixture]
-    public class WhenSendingAUnknowResourceRequest
+    public class WhenSendingAUnknowResourceRequest : TestServerBase
     {
-        [Test]
-        public async void ResponseIsValid()
-        {
-            using (var server = TestServer.Create<Startup>())
-            {
-                using (var client = new HttpClient(server.Handler))
-                {
-                    var response = await client.GetAsync("http://testserver/get/unknown");
+        string Url = "http://testserver/get/unknown";
 
-                    //test response exists
-                    Assert.IsNotNull(response);
-                    //test statuscode
-                    Assert.IsTrue(response.StatusCode == HttpStatusCode.NotFound);
-                    //test result
-                    var readTask = response.Content.ReadAsStringAsync();
-                    readTask.Wait();
-                    Assert.IsNotNull(readTask.Result);
-                    //test custom header is not added 
-                    response.Headers.Count().ShouldBe(0);
-                }
-            }
-            
+        [Test]
+        public async void ResponseIsNotNull()
+        {
+            var response = await CallGetUrlAsync(Url);
+            Assert.IsNotNull(response);
         }
+
+        [Test]
+        public async void ResponseIsABadRequest()
+        {
+            var response = await CallGetUrlAsync(Url);
+            Assert.IsTrue(response.StatusCode == HttpStatusCode.NotFound);
+        }
+
+        [Test]
+        public async void ResponseDoesNotContainsCustomHeaders()
+        {
+            var response = await CallGetUrlAsync(Url);
+            response.Headers.Count().ShouldBe(0);
+        }
+
     }
 }

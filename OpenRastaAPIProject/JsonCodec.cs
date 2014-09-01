@@ -8,7 +8,7 @@ using OpenRasta.Web;
 
 namespace OpenRastaAPIProject
 {
-    [MediaType("application/json;q=0.5;charset=utf-8", "json")]
+    [MediaType("application/json; charset=utf-8", "json")]
     // ReSharper disable ClassNeverInstantiated.Global
     public class JsonCodec : IMediaTypeWriter, IMediaTypeReader
         // ReSharper restore ClassNeverInstantiated.Global

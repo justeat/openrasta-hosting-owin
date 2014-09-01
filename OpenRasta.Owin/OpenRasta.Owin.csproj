@@ -38,7 +38,7 @@
     </Reference>
     <Reference Include="OpenRasta, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\openrasta-core.2.5.7\lib\net40\OpenRasta.dll</HintPath>
+      <HintPath>..\packages\openrasta-core.2.5.13\lib\net40\OpenRasta.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -57,7 +57,6 @@
     <Compile Include="AppBuilderExtensions.cs" />
     <Compile Include="DelayedStream.cs" />
     <Compile Include="OwinContextStore.cs" />
-    <Compile Include="OwinHttpHandler.cs" />
     <Compile Include="OpenRastaMiddleware.cs" />
     <Compile Include="OwinRequest.cs" />
     <Compile Include="OwinResponse.cs" />
