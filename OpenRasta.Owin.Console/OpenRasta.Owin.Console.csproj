@@ -67,7 +67,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenRastaAPIProject\OpenRasta.API.csproj">
+    <ProjectReference Include="..\OpenRasta.API\OpenRasta.API.csproj">
       <Project>{14437E3D-CA9C-4BFE-A481-8C021B9F4414}</Project>
       <Name>OpenRasta.API</Name>
     </ProjectReference>
