@@ -67,9 +67,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenRastaAPIProject\OpenRastaAPIProject.csproj">
+    <ProjectReference Include="..\OpenRasta.API\OpenRasta.API.csproj">
       <Project>{14437E3D-CA9C-4BFE-A481-8C021B9F4414}</Project>
-      <Name>OpenRastaAPIProject</Name>
+      <Name>OpenRasta.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

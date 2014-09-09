@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using OpenRastaAPIProject;
 using System.Linq;
+using OpenRasta.API;
 using Shouldly;
 
 namespace OpenRasta.Owin.Test

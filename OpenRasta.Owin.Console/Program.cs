@@ -1,5 +1,5 @@
 ﻿using Microsoft.Owin.Hosting;
-using OpenRastaAPIProject;
+using OpenRasta.API;
 
 namespace OpenRasta.Owin.Console
 {
