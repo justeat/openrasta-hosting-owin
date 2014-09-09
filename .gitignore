@@ -20,3 +20,16 @@
 /OpenRasta.Owin.Test/obj/Debug
 /OpenRasta.API/bin/Debug
 /OpenRasta.API/obj/Debug
+/src/OpenRasta.API/bin/Debug
+/src/OpenRasta.API/obj/Debug
+/src/OpenRasta.Owin.Console/bin/Debug
+/src/OpenRasta.Owin.Console/obj/Debug
+/src/OpenRasta.Owin.Test/bin/Debug
+/src/OpenRasta.Owin.Test/obj/Debug
+/src/OpenRasta.Owin/bin/Debug
+/src/OpenRasta.Owin/obj/Debug
+/src/OpenRasta.Owin/*.ncrunchproject
+/src/OpenRasta.Owin/*.user
+/src/OpenRasta.Owin.Test/*.ncrunchproject
+/src/OpenRasta.API/*.ncrunchproject
+/src/OpenRasta.Owin.Console/*.ncrunchproject
