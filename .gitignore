@@ -18,3 +18,5 @@
 /_NCrunch_OpenRasta.Owin/OpenRasta.Owin.crunchsolution.cache
 /OpenRasta.Owin.Test/bin/Debug
 /OpenRasta.Owin.Test/obj/Debug
+/OpenRasta.API/bin/Debug
+/OpenRasta.API/obj/Debug
