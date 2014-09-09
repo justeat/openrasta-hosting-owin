@@ -1,13 +1,26 @@
 OpenRasta Owin Hosting
 ======================
 
-OWIN host for open rasta
+OWIN host for OpenRasta, allows OpenRasta to be combined with other MiddleWare opening the possibilities.
 
-Aim of the project is to develop the "OpenRasta.Owin" project. This project is a OpenRasta middleware to allow processing of OwinContext request through OpenRasta.
+Getting started
+======================
 
-=======================
+1. Remove OpenRasta AspNet Hosting
+2. Add OpenRasta.Owin
+3. Create Startup.cs
+4. Add the following code 
 
-The project references the OpenRasta Core NuGet but you will need the source for debugging only.
+````c#
 
-=======================
-To test just run the console application to host the owin service
+public void Configuration(IAppBuilder appBuilder)
+{
+   IConfigurationSource configSources = new OpenRastaConfig();
+   appBuild.UserOpenRasta(configSources);
+}
+
+````
+Now you are can start creating you hosting platform using the Microsoft.Owin hosting nugets (console, service, IIS). See code link below for an example https://github.com/justeat/openrasta-hosting-owin/blob/master/OpenRasta.Owin.Console/Program.cs
+
+
+
