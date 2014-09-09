@@ -1,9 +1,9 @@
 ﻿using System.Text;
 using System.Net.Http;
 using Microsoft.Owin.Testing;
-using OpenRastaAPIProject;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using OpenRasta.API;
 
 namespace OpenRasta.Owin.Test
 {
