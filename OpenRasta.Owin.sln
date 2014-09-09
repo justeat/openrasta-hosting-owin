@@ -10,13 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A89D3C
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRasta.Owin", "OpenRasta.Owin\OpenRasta.Owin.csproj", "{2536AA33-930E-4AAB-97E7-B4FC7AACAD30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRasta.Owin", "src\OpenRasta.Owin\OpenRasta.Owin.csproj", "{2536AA33-930E-4AAB-97E7-B4FC7AACAD30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRasta.API", "OpenRasta.API\OpenRasta.API.csproj", "{14437E3D-CA9C-4BFE-A481-8C021B9F4414}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRasta.API", "src\OpenRasta.API\OpenRasta.API.csproj", "{14437E3D-CA9C-4BFE-A481-8C021B9F4414}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRasta.Owin.Console", "OpenRasta.Owin.Console\OpenRasta.Owin.Console.csproj", "{EBA2B257-9A8E-4420-9B54-E978BD9ED0C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRasta.Owin.Console", "src\OpenRasta.Owin.Console\OpenRasta.Owin.Console.csproj", "{EBA2B257-9A8E-4420-9B54-E978BD9ED0C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRasta.Owin.Test", "OpenRasta.Owin.Test\OpenRasta.Owin.Test.csproj", "{56FDDC66-3357-4D1A-9A75-B3B1C4AFB73D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenRasta.Owin.Test", "src\OpenRasta.Owin.Test\OpenRasta.Owin.Test.csproj", "{56FDDC66-3357-4D1A-9A75-B3B1C4AFB73D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
