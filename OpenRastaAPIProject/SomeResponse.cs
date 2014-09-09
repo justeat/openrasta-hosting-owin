@@ -6,6 +6,6 @@ namespace OpenRastaAPIProject
     public class SomeResponse
     {
         [DataMember]
-        public string value { get; set; }
+        public string Value { get; set; }
     }
 }

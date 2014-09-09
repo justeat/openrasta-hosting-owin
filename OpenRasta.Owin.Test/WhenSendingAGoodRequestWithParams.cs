@@ -8,7 +8,7 @@ namespace OpenRasta.Owin.Test
     [TestFixture]
     public class WhenSendingAGoodRequestWithParams :TestServerBase
     {
-        string Url = "http://testserver/Get/WithParams?value=100";
+        private const string Url = "http://testserver/Get/WithParams?value=100";
 
         [Test]
         public async void ResponseIsNotNull()
@@ -18,7 +18,7 @@ namespace OpenRasta.Owin.Test
         }
 
         [Test]
-        public async void ResponseStatusCodeIsOK()
+        public async void ResponseStatusCodeIsOk()
         {
             var response = await CallGetUrlAsync(Url);
             Assert.IsTrue(response.StatusCode == HttpStatusCode.OK);
