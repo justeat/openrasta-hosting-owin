@@ -16,7 +16,7 @@ Getting started
 public void Configuration(IAppBuilder appBuilder)
 {
    IConfigurationSource configSources = new OpenRastaConfig();
-   appBuilder.UserOpenRasta(configSources);
+   appBuilder.UseOpenRasta(configSources);
 }
 
 ````
