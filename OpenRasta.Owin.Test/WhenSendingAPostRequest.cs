@@ -10,8 +10,8 @@ namespace OpenRasta.Owin.Test
     [TestFixture]
     public class WhenSendingAPostRequest : TestServerBase
     {
-        string Url = "http://testserver/Post";
-        SomeRequest _request = new SomeRequest { Id = 10, Value = "You got post!", Description ="And that post has some descriptions"};
+        private const string Url = "http://testserver/Post";
+        readonly SomeRequest _request = new SomeRequest { Id = 10, Value = "You got post!", Description ="And that post has some descriptions"};
 
 
         [Test]
@@ -22,7 +22,7 @@ namespace OpenRasta.Owin.Test
         }
 
         [Test]
-        public async void ResponseStatusCodeIsOK()
+        public async void ResponseStatusCodeIsOk()
         {
             var response = await CallPostUrlAsync(Url, _request);
             Assert.IsTrue(response.StatusCode == HttpStatusCode.OK);
@@ -36,7 +36,7 @@ namespace OpenRasta.Owin.Test
             readTask.Wait();
             Assert.IsNotNull(readTask.Result);
             var dataResponse = JsonConvert.DeserializeObject<SomeResponse>(readTask.Result);
-            Assert.AreEqual(dataResponse.value ,"You got post!");
+            Assert.AreEqual(dataResponse.Value ,"You got post!");
             
         }
 

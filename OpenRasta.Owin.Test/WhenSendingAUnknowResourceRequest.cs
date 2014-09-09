@@ -8,7 +8,7 @@ namespace OpenRasta.Owin.Test
     [TestFixture]
     public class WhenSendingAUnknowResourceRequest : TestServerBase
     {
-        string Url = "http://testserver/get/unknown";
+        private const string Url = "http://testserver/get/unknown";
 
         [Test]
         public async void ResponseIsNotNull()

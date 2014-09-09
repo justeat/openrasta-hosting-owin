@@ -18,7 +18,7 @@ namespace OpenRasta.Owin.Test
         }
         
         [Test]
-        public async void ResponseStatusCodeIsOK()
+        public async void ResponseStatusCodeIsOk()
         {
             var response = await CallGetUrlAsync(Url);
             Assert.IsTrue(response.StatusCode == HttpStatusCode.OK);
