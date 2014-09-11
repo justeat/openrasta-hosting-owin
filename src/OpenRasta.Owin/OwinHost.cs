@@ -10,6 +10,18 @@ namespace OpenRasta.Owin
 {
     public class OwinHost : IHost
     {
+
+        public OwinHost(IConfigurationSource configuration)
+        {
+            ConfigurationSource = configuration;
+        }
+
+        public OwinHost(IConfigurationSource configuration,IDependencyResolverAccessor resolverAccesor)
+        {
+            ConfigurationSource = configuration;
+            ResolverAccessor = resolverAccesor;
+        }
+
         public IConfigurationSource ConfigurationSource { get; set; }
 
         public event EventHandler<IncomingRequestProcessedEventArgs> IncomingRequestProcessed;
@@ -17,6 +29,7 @@ namespace OpenRasta.Owin
         public bool ConfigureRootDependencies(IDependencyResolver resolver)
         {
             resolver.AddDependency<IContextStore, OwinContextStore>(DependencyLifetime.Singleton);
+            resolver.AddDependency<ICommunicationContext, OwinCommunicationContext>(DependencyLifetime.PerRequest);
             resolver.AddDependency<ILogger<OwinLogSource>, TraceSourceLogger<OwinLogSource>>(
                 DependencyLifetime.Transient);
             return true;
