@@ -23,4 +23,15 @@ public void Configuration(IAppBuilder appBuilder)
 Now you are can start creating you hosting platform using the Microsoft.Owin hosting nugets (console, service, IIS). See code link below for an example https://github.com/justeat/openrasta-hosting-owin/blob/master/OpenRasta.Owin.Console/Program.cs
 
 
+Using a custom dependency resolver
 
+````c#
+
+public void Configuration(IAppBuilder appBuilder)
+{
+   IConfigurationSource configSources = new OpenRastaConfig();
+   IDependencyResolverAccessor customDependencyResolver = new CustomDependencyResolver()
+   appBuilder.UseOpenRasta(configSources, customDependencyResolver);
+}
+
+````
