@@ -13,27 +13,29 @@ namespace OpenRasta.Owin
     public class OpenRastaMiddleware : OwinMiddleware
     {
         private static readonly object SyncRoot = new object();
-        private readonly IConfigurationSource _options;
         private HostManager _hostManager;
         private static ILogger<OwinLogSource> Log { get; set; }
-
+        private static OwinHost Host { get; set; }
 
         public OpenRastaMiddleware(OwinMiddleware next, IConfigurationSource options)
             : base(next)
         {
-            _options = options;
-            Host = new OwinHost();
+            Host = new OwinHost(options);
         }
 
-        public static OwinHost Host { get; private set; }
-
+        public OpenRastaMiddleware(OwinMiddleware next, IConfigurationSource options,IDependencyResolverAccessor resolverAccesor)
+            : base(next)
+        {
+            Host = new OwinHost(options, resolverAccesor);
+        }
+        
         public override async Task Invoke(IOwinContext owinContext)
         {
             TryInitializeHosting();
 
             try
             {
-                owinContext = ProcessRequest(owinContext);                    
+              owinContext = ProcessRequest(owinContext);                    
 
             }
             catch (Exception e)
@@ -65,22 +67,21 @@ namespace OpenRasta.Owin
             lock (SyncRoot)
             {
                 Thread.MemoryBarrier();
-                if (_hostManager == null)
+                if (_hostManager != null) return;
+
+                var hostManager = HostManager.RegisterHost(Host);
+                Thread.MemoryBarrier();
+                _hostManager = hostManager;
+                try
                 {
-                    var hostManager = HostManager.RegisterHost(Host);
-                    Thread.MemoryBarrier();
-                    _hostManager = hostManager;
-                    try
-                    {
-                        Host.ConfigurationSource = _options;
-                        Host.RaiseStart();
-                        _hostManager.Resolver.Resolve<ILogger<OwinLogSource>>();
-                    }
-                    catch
-                    {
-                        HostManager.UnregisterHost(Host);
-                        _hostManager = null;
-                    }
+                    Host.RaiseStart();
+                    _hostManager.Resolver.Resolve<ILogger<OwinLogSource>>();
+                }
+                catch
+                {
+                    HostManager.UnregisterHost(Host);
+                    _hostManager = null;
+                    throw;
                 }
             }
         }

@@ -18,6 +18,15 @@ namespace OpenRasta.Owin.Test
             return await client.GetAsync(url);
         }
 
+        protected static async Task<HttpResponseMessage> CallGetUrlDIAsync(string url)
+        {
+            var server = TestServer.Create<StartupDI>();
+
+            var client = new HttpClient(server.Handler);
+
+            return await client.GetAsync(url);
+        }
+
 
         protected static async Task<HttpResponseMessage> CallPostUrlAsync(string url, object data)
         {
