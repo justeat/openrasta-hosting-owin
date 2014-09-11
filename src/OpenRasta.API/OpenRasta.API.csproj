@@ -65,6 +65,7 @@
     <Compile Include="SomeRequest.cs" />
     <Compile Include="SomeResponse.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="StartupDI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
