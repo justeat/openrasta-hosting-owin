@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>OpenRasta.Owin</id>
+    <id>openrasta-hosting-owin</id>
+    <title>OpenRasta.Hosting.Owin by Just-eat</title>
     <version>1.0.0</version>
     <authors>JUST-EAT</authors>
     <owners>JUST-EAT</owners>
@@ -9,9 +10,9 @@
     <projectUrl>https://github.com/justeat/openrasta-hosting-owin</projectUrl>
     <iconUrl>https://avatars3.githubusercontent.com/u/1516790?s=200</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>OWIN hosting for OpenRasta</description>
-    <copyright>Copyright 2014</copyright>
-    <tags>OWIN Selfhost OpenRasta</tags>
+    <description>OWIN hosting for OpenRasta v2 by Just-Eat</description>
+    <copyright>Copyright 2014-2015 Just-eat.co.uk Limited. OpenRasta is a registered trademark of naughtyProd Limited.</copyright>
+    <tags>OWIN Selfhost OpenRasta Just-eat</tags>
     <dependencies>
 		<dependency id="Microsoft.Owin" version="3.0.0" />
 		<dependency id="openrasta-core" version="2.5.7"/>

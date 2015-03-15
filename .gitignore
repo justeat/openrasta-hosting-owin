@@ -34,3 +34,5 @@
 /src/OpenRasta.API/*.ncrunchproject
 /src/OpenRasta.Owin.Console/*.ncrunchproject
 /src/OpenRasta.API/OpenRasta.API.csproj.user
+
+*.suo
