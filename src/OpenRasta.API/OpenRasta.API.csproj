@@ -71,9 +71,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenRasta.Owin\OpenRasta.Owin.csproj">
+    <ProjectReference Include="..\OpenRasta.Owin\OpenRasta.Hosting.Owin.csproj">
       <Project>{2536aa33-930e-4aab-97e7-b4fc7aacad30}</Project>
-      <Name>OpenRasta.Owin</Name>
+      <Name>OpenRasta.Hosting.Owin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
